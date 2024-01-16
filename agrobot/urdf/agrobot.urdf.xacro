@@ -1,0 +1,1794 @@
+<?xml version="1.0"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by
+Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="agrobot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--add
+  colors to robot to visualize in gazebo-->
+  <xacro:macro name="base_link">
+    <visual>
+      <material>
+        <ambient>1 0 0 1</ambient>
+        <diffuse>1 0 0 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+      </material>
+    </visual>
+  </xacro:macro>
+  <xacro:macro name="left_rear_wheel_link">
+    <visual>
+      <material>
+        <ambient>0.5 0.5 0.5 1</ambient>
+        <diffuse>0.5 0.5 0.5 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+      </material>
+    </visual>
+  </xacro:macro>
+  <xacro:macro name="right_rear_wheel_link">
+    <visual>
+      <material>
+        <ambient>0.5 0.5 0.5 1</ambient>
+        <diffuse>0.5 0.5 0.5 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+      </material>
+    </visual>
+  </xacro:macro>
+  <xacro:macro name="right_front_wheel_link">
+    <visual>
+      <material>
+        <ambient>0.5 0.5 0.5 1</ambient>
+        <diffuse>0.5 0.5 0.5 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+      </material>
+    </visual>
+  </xacro:macro>
+  <xacro:macro name="left_front_wheel_link">
+    <visual>
+      <material>
+        <ambient>0.5 0.5 0.5 1</ambient>
+        <diffuse>0.5 0.5 0.5 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+      </material>
+    </visual>
+  </xacro:macro>
+  <xacro:macro name="gripper">
+    <visual>
+      <material>
+        <ambient>0 0 0 1</ambient>
+        <diffuse>0 0 0 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+      </material>
+    </visual>
+  </xacro:macro>
+
+  <!-- # Add this before base link -->
+  <link name="dummy_link"></link>
+
+  <!-- # Add this after base link -->
+  <joint name="dummy_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="dummy_link" />
+    <child link="base_link" />
+  </joint>
+  <!-- dummy link ends -->
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.338619187290064 -0.000162910163891747 0.234771206125617"
+        rpy="0 0 0" />
+      <mass
+        value="90.0457257239936" />
+      <inertia
+        ixx="4.89388987338462"
+        ixy="-0.00136474115893025"
+        ixz="-1.05008258735402"
+        iyy="9.8227363970549"
+        iyz="-0.00408270410883873"
+        izz="11.1213786049405" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.666666666666667 0.698039215686274 0.768627450980392 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_rear_wheel_link">
+    <inertial>
+      <origin
+        xyz="-6.88524348646524E-10 -0.0971549519873335 1.125871895713E-09"
+        rpy="0 0 0" />
+      <mass
+        value="35.6042214737412" />
+      <inertia
+        ixx="0.708004621980203"
+        ixy="1.07770064052363E-09"
+        ixz="6.70022802098861E-11"
+        iyy="1.27149421818034"
+        iyz="-1.75179561332183E-09"
+        izz="0.708004621897381" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/left_rear_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/left_rear_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_rear_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.377856904248594 0.472821 -0.1457325"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_rear_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="right_rear_wheel_link">
+    <inertial>
+      <origin
+        xyz="7.70649155601433E-10 0.0971550480126593 -1.07134373594775E-09"
+        rpy="0 0 0" />
+      <mass
+        value="35.6042214737478" />
+      <inertia
+        ixx="0.708004621982386"
+        ixy="-1.20553451036157E-09"
+        ixz="7.2294183370238E-11"
+        iyy="1.27149421820327"
+        iyz="1.66639214273336E-09"
+        izz="0.7080046219204" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/right_rear_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/right_rear_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_rear_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.377856904248594 -0.472820999999999 -0.1457325"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_rear_wheel_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="right_steer_link">
+    <inertial>
+      <origin
+        xyz="0.00106983010521355 -0.058216575717977 0.0586919568981064"
+        rpy="0 0 0" />
+      <mass
+        value="2.02221873415406" />
+      <inertia
+        ixx="0.0237510071456577"
+        ixy="0.000349321803548295"
+        ixz="8.49347969022073E-05"
+        iyy="0.00474702693466583"
+        iyz="-0.00462206016825545"
+        izz="0.0198029274091733" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/right_steer_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/right_steer_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_steer_joint"
+    type="revolute">
+    <origin
+      xyz="0.269843095751407 -0.113347500000001 -0.165163500000007"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_steer_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.5"
+      upper="0.5"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="right_front_wheel_link">
+    <inertial>
+      <origin
+        xyz="-0.00178494838394699 0.0971386499534298 -1.03492078795675E-09"
+        rpy="0 0 0" />
+      <mass
+        value="35.6042214682187" />
+      <inertia
+        ixx="0.70819481994374"
+        ixy="-0.0103507693932998"
+        ixz="-1.14535353385098E-10"
+        iyy="1.27130402010412"
+        iyz="1.61921169599121E-09"
+        izz="0.70800462188146" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/right_front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/right_front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.00600932049673797 -0.327033293258374 0.0194310000000003"
+      rpy="0 0 0" />
+    <parent
+      link="right_steer_link" />
+    <child
+      link="right_front_wheel_link" />
+    <axis
+      xyz="0.0183721546209595 -0.999831217723563 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="left_steer_link">
+    <inertial>
+      <origin
+        xyz="-7.93909673002524E-08 0.0582264056008295 0.0586919564086109"
+        rpy="0 0 0" />
+      <mass
+        value="2.0222188316113" />
+      <inertia
+        ixx="0.0237574260903284"
+        ixy="9.05664891630045E-10"
+        ixz="-2.90916636093196E-09"
+        iyy="0.0047406081835411"
+        iyz="0.00462284049826763"
+        izz="0.0198029275829883" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/left_steer_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/left_steer_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_steer_joint"
+    type="revolute">
+    <origin
+      xyz="0.269843095751406 0.1133475 -0.1651635"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_steer_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.5"
+      upper="0.5"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="left_front_wheel_link">
+    <inertial>
+      <origin
+        xyz="-9.18307208053193E-10 -0.0971549519880449 9.47844053245106E-10"
+        rpy="0 0 0" />
+      <mass
+        value="35.6042214743438" />
+      <inertia
+        ixx="0.70800462196026"
+        ixy="1.43513145970104E-09"
+        ixz="7.81085571079474E-11"
+        iyy="1.27149421820327"
+        iyz="-1.47327217429804E-09"
+        izz="0.708004621942521" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/left_front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/left_front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.3270885 0.0194310000000001"
+      rpy="0 0 0" />
+    <parent
+      link="left_steer_link" />
+    <child
+      link="left_front_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 0 -5.55111512312578E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.87856337260668" />
+      <inertia
+        ixx="0.00145328733893972"
+        ixy="3.061917552346E-36"
+        ixz="5.14974347887166E-20"
+        iyy="0.00145328733893972"
+        iyz="-2.34952547281483E-36"
+        izz="0.0010776550138266" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.3556 0.00635000000000025 0.476885"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="0">
+    <inertial>
+      <origin
+        xyz="7.22391839399344E-06 -0.000475137384474633 0.00243497864398173"
+        rpy="0 0 0" />
+      <mass
+        value="1.91435201606526" />
+      <inertia
+        ixx="0.00312084570629236"
+        ixy="1.03835097418113E-07"
+        ixz="2.20016415047805E-07"
+        iyy="0.00309492725703448"
+        iyz="5.55031448921244E-07"
+        izz="0.00574920281992534" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_0_joint"
+    type="fixed">
+    <origin
+      xyz="-0.400240654248588 0.00634999999999925 0.437005"
+      rpy="0 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="0" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="1">
+    <inertial>
+      <origin
+        xyz="0.000999697019135302 0.0685590146345417 0.0115695327417828"
+        rpy="0 0 0" />
+      <mass
+        value="8.30725771838491" />
+      <inertia
+        ixx="0.0290070611357098"
+        ixy="-0.00024404396574081"
+        ixz="-0.000162929495467449"
+        iyy="0.0272249526419641"
+        iyz="-0.00280761572612354"
+        izz="0.0271112300666375" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="0_1_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.032"
+      rpy="1.5707963267949 0 -3.14159265358979" />
+    <parent
+      link="0" />
+    <child
+      link="1" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="2">
+    <inertial>
+      <origin
+        xyz="0.00595545411585895 0.0116126506445609 0.0682998582790035"
+        rpy="0 0 0" />
+      <mass
+        value="8.30725987080827" />
+      <inertia
+        ixx="0.0290073727643984"
+        ixy="-0.000247850514976997"
+        ixz="-0.000155662685748835"
+        iyy="0.0270973353687768"
+        iyz="-0.0028072856850568"
+        izz="0.0272385496576121" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="1_2_joint"
+    type="revolute">
+    <origin
+      xyz="0.00832831562652692 0.0800000000000003 0.0956380633368556"
+      rpy="0 0 0" />
+    <parent
+      link="1" />
+    <child
+      link="2" />
+    <axis
+      xyz="0.0867532877763207 0 0.996229826425609" />
+    <limit
+      lower="-1.65"
+      upper="1.65"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="3">
+    <inertial>
+      <origin
+        xyz="-1.04083408558608E-17 -0.00416892922889589 1.81521464526213E-14"
+        rpy="0 0 0" />
+      <mass
+        value="11.5994106381345" />
+      <inertia
+        ixx="0.221390635324574"
+        ixy="-2.39691037070085E-16"
+        ixz="7.42441146677217E-20"
+        iyy="0.0175271612190965"
+        iyz="4.69546109641302E-16"
+        izz="0.221390635324574" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="2_3_joint"
+    type="fixed">
+    <origin
+      xyz="0.00694026302210598 0.317100126418792 0.0796983861140481"
+      rpy="0 0 0" />
+    <parent
+      link="2" />
+    <child
+      link="3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="4">
+    <inertial>
+      <origin
+        xyz="0.00292499147896346 -0.00991735299883056 0.0492119262227205"
+        rpy="0 0 0" />
+      <mass
+        value="3.60191554356692" />
+      <inertia
+        ixx="0.00635835791698763"
+        ixy="4.82814461029873E-05"
+        ixz="3.97588349686826E-05"
+        iyy="0.00594652060922831"
+        iyz="0.000779864890495734"
+        izz="0.00704691386224002" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="3_4_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00349503410519483 0.295799873581208 -0.0595976068026529"
+      rpy="0 0 0" />
+    <parent
+      link="3" />
+    <child
+      link="4" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="5">
+    <inertial>
+      <origin
+        xyz="-0.0106102317325918 0.00322927553978399 0.0533717831449155"
+        rpy="0 0 0" />
+      <mass
+        value="1.25836102164551" />
+      <inertia
+        ixx="0.0021651395517649"
+        ixy="1.7580597700485E-05"
+        ixz="0.000287682464723543"
+        iyy="0.00231988477711238"
+        iyz="7.29731063713995E-06"
+        izz="0.00248748931679315" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="4_5_joint"
+    type="revolute">
+    <origin
+      xyz="-0.000492307428193579 0 -0.00839486644433451"
+      rpy="-3.14159265358979 0 -1.57079632679491" />
+    <parent
+      link="4" />
+    <child
+      link="5" />
+    <axis
+      xyz="0 0.0585432848441399 0.998284871066199" />
+    <limit
+      lower="-2.90"
+      upper="2.90"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="6">
+    <inertial>
+      <origin
+        xyz="0.00280196613202777 -2.68941073776983E-05 1.57717442811345E-06"
+        rpy="0 0 0" />
+      <mass
+        value="7.18112295808518" />
+      <inertia
+        ixx="0.0068644718242191"
+        ixy="0.00117511571246506"
+        ixz="-6.89133291248891E-05"
+        iyy="0.12928277854405"
+        iyz="6.61450704935139E-07"
+        izz="0.129294018865426" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="5_6_joint"
+    type="fixed">
+    <origin
+      xyz="-0.291837593948312 0.00629617845121455 0.059433336867193"
+      rpy="0 0 0" />
+    <parent
+      link="5" />
+    <child
+      link="6" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="7">
+    <inertial>
+      <origin
+        xyz="-0.0464121119843353 0.000203010500011345 0.00966279069116105"
+        rpy="0 0 0" />
+      <mass
+        value="0.728981385244412" />
+      <inertia
+        ixx="0.000910110083796708"
+        ixy="6.94824779264048E-06"
+        ixz="0.000119887081631299"
+        iyy="0.000986344964828748"
+        iyz="-6.12688333886314E-06"
+        izz="0.000877608438305994" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="6_7_joint"
+    type="fixed">
+    <origin
+      xyz="-0.225738911568433 0.0021667094607711 -0.000127064220658946"
+      rpy="3.14159265358979 0 0" />
+    <parent
+      link="6" />
+    <child
+      link="7" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="8">
+    <inertial>
+      <origin
+        xyz="0.00315312409775961 -0.047401181838342 0.00966077510150698"
+        rpy="0 0 0" />
+      <mass
+        value="0.728996819970243" />
+      <inertia
+        ixx="0.000986248578286713"
+        ixy="5.82280818823239E-06"
+        ixz="-8.3317825035149E-06"
+        iyy="0.000910566401822428"
+        iyz="0.000119792176007718"
+        izz="0.000877240479552543" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/8.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/8.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="7_8_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0540016060931738 0.00345562761776773 0.060506513291135"
+      rpy="-1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="7" />
+    <child
+      link="8" />
+    <axis
+      xyz="-0.0655690232318667 0.997848033826643 -6.76810218960656E-05" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="9">
+    <inertial>
+      <origin
+        xyz="0.00124689136429368 0.0466116090791986 0.00958696238668483"
+        rpy="0 0 0" />
+      <mass
+        value="0.728978116270464" />
+      <inertia
+        ixx="0.000985386694798776"
+        ixy="-1.24938780935602E-05"
+        ixz="-1.18699355552977E-05"
+        iyy="0.000910144612831302"
+        iyz="-0.000119429080856919"
+        izz="0.000878519013700961" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/9.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.894117647058823 0.913725490196078 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/9.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="8_9_joint"
+    type="revolute">
+    <origin
+      xyz="0.00393333875613289 -0.0549496396746462 0.0615028863029619"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="8" />
+    <child
+      link="9" />
+    <axis
+      xyz="-0.00521812277108888 -0.999986301161722 0.000410711144438554" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="10">
+    <inertial>
+      <origin
+        xyz="0.000110377953812441 -0.000861757182314848 -0.013713304265725"
+        rpy="0 0 0" />
+      <mass
+        value="0.430679885908856" />
+      <inertia
+        ixx="0.000222454433732095"
+        ixy="-5.35332309294992E-06"
+        ixz="2.29240029064471E-06"
+        iyy="0.000234958685531562"
+        iyz="1.31785780318959E-06"
+        izz="0.000403266492681117" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/10.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/10.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="9_10_joint"
+    type="revolute">
+    <origin
+      xyz="0.00933464283060605 0.0541881605289505 0.0879633457851359"
+      rpy="0 0.0872664625997166 0" />
+    <parent
+      link="9" />
+    <child
+      link="10" />
+    <axis
+      xyz="-0.0152507043027664 0.000125460644613228 -0.999883693375333" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="gripper">
+    <inertial>
+      <origin
+        xyz="0.0638506339489031 0.00656885271032123 -8.05301245021539E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.296980282431166" />
+      <inertia
+        ixx="0.000180646813372541"
+        ixy="-7.06233900050708E-05"
+        ixz="8.6579990876807E-08"
+        iyy="0.000859855480499732"
+        iyz="8.90712406615091E-09"
+        izz="0.000867121092394948" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/gripper.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/gripper.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gripper_joint"
+    type="continuous">
+    <origin
+      xyz="5.71901411399595E-05 0 0.00374956385014949"
+      rpy="1.57079632679489 -1.48352986419518 3.14159265358979" />
+    <parent
+      link="10" />
+    <child
+      link="gripper" />
+    <axis
+      xyz="0.994749647587966 0.102338276725984 -0.000125460644611053" />
+  </joint>
+  <link
+    name="camera1">
+    <inertial>
+      <origin
+        xyz="0.022177766274157 0.00336995906468324 0.129258567218364"
+        rpy="0 0 0" />
+      <mass
+        value="0.372606994219054" />
+      <inertia
+        ixx="0.00112021866595854"
+        ixy="1.71233564433347E-05"
+        ixz="-4.97046817386124E-05"
+        iyy="0.000383612391953193"
+        iyz="1.61899853344199E-05"
+        izz="0.000894061652523148" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/camera1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/camera1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="9_to_camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.00596351407325493 0.054192293332445 0.0551952628094936"
+      rpy="-1.5707963267949 -1.48352986419518 0" />
+    <parent
+      link="9" />
+    <child
+      link="camera1" />
+    <axis
+      xyz="0.999883693375333 0.0152507043027703 -0.000125460644611053" />
+  </joint>
+  <link
+    name="box">
+    <inertial>
+      <origin
+        xyz="-3.48038049730048E-05 2.54782625984356E-16 0.0202301146412345"
+        rpy="0 0 0" />
+      <mass
+        value="7.72060620410743" />
+      <inertia
+        ixx="0.374813962548035"
+        ixy="5.18084794476217E-17"
+        ixz="8.21432606256597E-06"
+        iyy="0.108114101901683"
+        iyz="-2.25702668194321E-17"
+        izz="0.465535662550645" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/box.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/box.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_box"
+    type="fixed">
+    <origin
+      xyz="0.0696593457514061 0 0.428625"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="box" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="back_right_rod">
+    <inertial>
+      <origin
+        xyz="0 -0.154946853706112 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.692343632758655" />
+      <inertia
+        ixx="0.00551899047474228"
+        ixy="-1.91978532357076E-20"
+        ixz="-1.31993210345085E-22"
+        iyy="9.29561669777746E-05"
+        iyz="-4.25454738859189E-20"
+        izz="0.00551899047474228" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/back_right_rod.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/back_right_rod.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_right_rod"
+    type="fixed">
+    <origin
+      xyz="-0.377856904248594 0.472821 -0.1457325"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_right_rod" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="back_left_rod">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 0.154946853706112 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.692343632758655" />
+      <inertia
+        ixx="0.00551899047474228"
+        ixy="4.71784432949704E-21"
+        ixz="-4.57812218930376E-21"
+        iyy="9.29561669777746E-05"
+        iyz="-5.0266866172564E-19"
+        izz="0.00551899047474228" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/back_left_rod.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/back_left_rod.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_backleft_rod_joint"
+    type="fixed">
+    <origin
+      xyz="-0.377856904248594 -0.472821 -0.1457325"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_left_rod" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera2">
+    <inertial>
+      <origin
+        xyz="0.0180083766960972 -0.00123519538517971 0.130299495581829"
+        rpy="0 0 0" />
+      <mass
+        value="0.372605182145673" />
+      <inertia
+        ixx="0.00112475848024442"
+        ixy="7.49631241833055E-06"
+        ixz="-3.82036485678764E-05"
+        iyy="0.000382704445355383"
+        iyz="4.21798636586281E-07"
+        izz="0.000890427027773502" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/camera2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agrobot/meshes/camera2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="basr_to_camera2_joint"
+    type="fixed">
+    <origin
+      xyz="0.689300980496933 0.0337283352867759 0.132346593602987"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!-- colors starts -->
+  <gazebo reference="base_link">
+    <xacro:base_link />
+  </gazebo>
+  <gazebo reference="left_rear_wheel_link">
+    <xacro:left_rear_wheel_link />
+  </gazebo>
+  <gazebo reference="right_rear_wheel_link">
+    <xacro:right_rear_wheel_link />
+  </gazebo>
+  <gazebo reference="right_front_wheel_link">
+    <xacro:right_front_wheel_link />
+  </gazebo>
+  <gazebo reference="left_front_wheel_link">
+    <xacro:left_front_wheel_link />
+  </gazebo>
+  <gazebo reference="gripper">
+    <xacro:gripper />
+  </gazebo>
+  <!-- colors ends here -->
+  <!-- controller for joints start -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <!-- Velocity Controllers -->
+    <joint
+      name="left_rear_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="right_rear_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="left_front_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="right_front_wheel_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="0_1_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="1_2_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="4_5_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="7_8_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="8_9_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="9_10_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="gripper_joint">
+      <command_interface name="velocity">
+        <param name="min">-1000.0</param>
+        <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <!-- velocity controller ends -->
+
+    <!-- Position Controller starts -->
+    <joint
+      name="left_steer_joint">
+      <command_interface name="position">
+        <param name="min">-3.14</param>
+        <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="right_steer_joint">
+      <command_interface name="position">
+        <param name="min">-3.14</param>
+        <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="0_1_joint">
+      <command_interface name="position">
+        <param name="min">-6.28319</param>
+        <param name="max">6.28319</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint
+      name="1_2_joint">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint
+      name="4_5_joint">
+      <command_interface name="position">
+        <param name="min">-3.14</param>
+        <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint
+      name="7_8_joint">
+      <command_interface name="position">
+        <param name="min">-6.28</param>
+        <param name="max">6.28</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint
+      name="8_9_joint">
+      <command_interface name="position">
+        <param name="min">-6.28</param>
+        <param name="max">6.28</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint
+      name="9_10_joint">
+      <command_interface name="position">
+        <param name="min">-6.28</param>
+        <param name="max">6.28</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint
+      name="gripper_joint">
+      <command_interface name="position">
+        <param name="min">-3.14</param>
+        <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <!-- Position Controller ends -->
+  </ros2_control>
+  <!-- gazebo plugin for the controller -->
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>$(find agrobot)/config/control.yaml</parameters>
+    </plugin>
+  </gazebo>
+  <!-- lidar -->
+  <gazebo reference="lidar_link">
+    <sensor name="lidar" type="ray">
+      <pose>0.0 0.0 0.0 0 0 0</pose>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>5</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1.00000</resolution>
+            <min_angle>0.000000</min_angle>
+            <max_angle>6.280000</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.120000</min>
+          <max>3.5</max>
+          <resolution>0.015000</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>lidar_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <!-- lidar ends -->
+  <!-- IMU -->
+  <gazebo reference="base_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>base_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>base_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  <!-- IMU ends -->
+  <!-- gripper plugin starts -->
+  <gazebo>
+    <plugin name='vaccum_gripper' filename='libgazebo_ros_vacuum_gripper.so'>
+
+      <!-- This part can be commented out if not required -->
+      <ros>
+
+        <!-- Add a namespace -->
+
+        <namespace>/</namespace>
+
+        <!-- Remapping service and topic names -->
+        <remapping>switch:=custom_switch</remapping>
+        <remapping>grasping:=custom_grasping</remapping>
+      </ros>
+
+      <!-- Link associated with gripper -->
+      <link_name>gripper</link_name>
+
+      <!-- Max distance to attract entities -->
+      <max_distance>10.0</max_distance>
+
+      <!-- List of entities to be not attracted by the gripper -->
+      <fixed>ground_plane</fixed>
+      <fixed>wall</fixed>
+
+    </plugin>
+  </gazebo>
+  <!-- gripper plugin ends -->
+  <!-- depth camera plugin starts -->
+  <gazebo reference="camera">
+    <sensor name="camera" type="depth">
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+      <camera>
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_plugin" filename="libgazebo_ros_depth_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+</robot>
